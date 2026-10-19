@@ -1,0 +1,277 @@
+/* palette 1 */
+:root {
+        /* palette 1 
+    --color1: #f7b538;
+    --color2: #65743a;
+    --color3: #d3f3ee;
+    --color4: #a63d40;
+    --color5: #1e2d2f;  */
+
+    /* palette 2 
+    --color1: #7c6a0a;
+    --color2: #babd8d;
+    --color3: #ffdac6;
+    --color4: #fa9500;
+    --color5: #eb6424; */
+
+    /* palette 3 
+    --color1: #ffd275;
+    --color2: #e8ae68;
+    --color3: #a57f60;
+    --color4: #e3a587;
+    --color5: #db5a42; */
+
+    /* palette 4 */
+    --color1: #247ba0;
+    --color2: #70c1b3;
+    --color3: #b2dbbf;
+    --color4: #f3ffbd;
+    --color5: #e15554; 
+
+    /* palette 5 */
+    --color1: rgb(48, 188, 237);
+    --color2: #303036;
+    --color3: #fffaff;
+    --color4: rgb(252, 81, 48);
+    --color5: #050401; 
+
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+
+html {
+    box-sizing: border-box;
+    display: flex;
+    top: 0;
+    left: 0;
+    margin: 0;
+    font-family: 'Cascadia Mono', 'open-sans', serif;
+    color: var(--color3);
+    background: #fff7d7;
+    background: #d2e1c6;
+    background: #fff7d7;
+
+}
+
+.color-swatch {
+    display: block;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 45px;
+    background: linear-gradient(to right,
+        var(--color2) 0%, var(--color2) 20%,
+        var(--color1) 20%, var(--color1) 40%, 
+        var(--color3) 40%, var(--color3) 60%,
+        var(--color4) 60%, var(--color4) 80%,
+        var(--color5) 80%, var(--color5) 100%
+        );
+}
+
+
+
+body {
+  display: inline-block;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color4);
+  color: var(--color2);
+  font-family: 'Cascadia Mono', 'open-sans', sans-serif;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.business-card {
+  position: relative;
+  z-index: 1;
+  background-color: var(--color2);
+  background: #e3f5d4;
+  background: linear-gradient(to top left, #fff7d7, #e3f5d4, #fff7d7);
+  display: flex;
+  flex-direction: column;
+  border-radius: 30px;
+  width: 70vw;
+  padding: 20px;
+  font-size: 16px;
+  margin: 10vh auto;
+  text-align: center;
+  box-shadow: 4px 4px 8px rgba(147, 31, 4, 0.993);
+  overflow: hidden;
+}
+
+.business-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: 33px;
+    padding: 3px;
+
+    background: conic-gradient(
+        from var(--angle),
+        transparent 60%,
+        rgb(48, 188, 237),
+        var(--color1),
+        var(--color3),
+        transparent
+    );
+
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+
+    --angle: 0deg;
+    transition: background 0.1s ease;
+}
+
+
+.business-card:hover::before {
+    animation: rotateBorder 2.5s linear infinite;
+}
+
+
+@keyframes rotateBorder {
+    to {
+        --angle: 360deg;
+    }
+}
+
+
+/* add a lil triangle effect behind the text
+.triangle {
+    border-color: white;
+    border-radius: 70vw, 400px, 0, 0;
+    rgb(48, 188, 237);
+}  */
+
+.designation {
+    display: inline-block;
+    position: relative;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    font-size: 1.3em;
+    color: var(--color3);
+    background: var(--color4);
+    width: 100%;
+    height: 30px;
+    margin: 0 auto;
+    padding-top: 12px;
+    padding-bottom: 2px;
+    text-align: center;
+    justify-content: center;
+    border-radius: 3px;
+    box-shadow: 1px 2px 4px var(--color4);
+    border-top: 2px solid rgb(48, 188, 237);
+    border-left: 2px solid rgb(48, 188, 237);
+}
+
+.profile-image {
+    position: relative;
+    margin-top: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+    max-width: 20vh;
+    border-radius: 70px;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 2px 2px rgba(252, 82, 48, 0.293);
+    border-top: 2px solid rgb(48, 188, 237);
+    border-left: 2px solid rgb(48, 188, 237);
+}
+
+.full-name, h2 {
+    color: var(--color5);
+    font-family: 'Cascadia Mono', 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+
+.full-name {
+    font-size: 2.5em;
+    text-shadow: 1px 1px var(--color4);
+    text-shadow: 3px 3px 2px rgba(252, 82, 48, 0.293);
+    margin-bottom: 2px;
+    padding-bottom: 0px;
+}
+
+.nickname {
+    margin-top: 2px;
+    margin-bottom: 10px;
+    color: rgba(0, 0, 0, 0.788);
+    font-size: 1.5em;
+}
+
+
+h2 {
+    font-size: 1.5em;
+    color: var(--color2);
+}
+
+
+.skill {
+    color: var(--color4);
+    margin-top: 18px;
+    font-weight: bold;
+    font-family: 'Cascadia Mono';
+    display: inline-block;
+    transform: scaleY(170%) scaleX(120%);
+    
+    text-shadow: 3px 3px 2px rgba(252, 82, 48, 0.293);
+}
+
+
+p {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  color: #247ba0;
+}
+
+
+.github-link {
+    padding-top: 35px;
+}
+
+/* use behind buttons or similar? 
+#fff7d7
+*/
+
+
+/* add the icons instead of text later */
+.social-media {
+    margin-bottom: 30px;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color4);
+  text-shadow: 3px 3px 2px rgba(252, 82, 48, 0.193);
+}
+
+a:hover {
+    color: var(--color1);
+    transform: scale(1.1, 1.1);
+}
+
+a:active {
+    color: var(--color4);
+}
+
+
+@media screen and (min-width: 756px) {
+    .business-card {
+        max-width: 800px;
+    }
+
+    .profile-image {
+        max-width: 22vh;
+    }
+}
